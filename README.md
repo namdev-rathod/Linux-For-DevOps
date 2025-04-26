@@ -23,4 +23,6 @@
 20. 🧰 General Commands  
 21. 📝 Editors – VI, VIM, Nano  
 22. 🐚 Shell Scripting  
-23. 🕒 Cron Management  
+23. 🕒 Cron Management
+24. 🎯 Linux Interview Questions
+25. 📚 From Where to Learn Linux?
