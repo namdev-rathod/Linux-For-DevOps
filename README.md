@@ -361,4 +361,161 @@ sudo usermod -aG sudo devops_user
 
 ---
 
+## 📄 **Linux File Management**
+
+Linux provides a wide range of commands for managing files and directories efficiently. Here's what you need to know:
+
+---
+
+### 📂 **1. Creating Files**
+
+- **Create an empty file**:
+  ```bash
+  touch filename.txt
+  ```
+
+- **Create a file with content**:
+  ```bash
+  echo "Hello, World!" > hello.txt
+  ```
+
+---
+
+### 📝 **2. Viewing Files**
+
+- **View the content of a file**:
+  ```bash
+  cat filename.txt
+  ```
+
+- **View the beginning of a file**:
+  ```bash
+  head filename.txt
+  ```
+
+- **View the end of a file**:
+  ```bash
+  tail filename.txt
+  ```
+
+- **Search for content within a file**:
+  ```bash
+  grep "search_term" filename.txt
+  ```
+
+---
+
+### 🗂️ **3. Managing Directories**
+
+- **Create a directory**:
+  ```bash
+  mkdir directory_name
+  ```
+
+- **Change to a directory**:
+  ```bash
+  cd directory_name
+  ```
+
+- **List the contents of a directory**:
+  ```bash
+  ls -l
+  ```
+
+- **Remove a directory**:
+  ```bash
+  rmdir directory_name
+  ```
+
+---
+
+### ✂️ **4. Copying, Moving, and Renaming Files**
+
+- **Copy a file**:
+  ```bash
+  cp source_file destination_file
+  ```
+
+- **Move or rename a file**:
+  ```bash
+  mv old_name new_name
+  ```
+
+- **Copy a directory and its contents**:
+  ```bash
+  cp -r source_directory destination_directory
+  ```
+
+---
+
+### 🗑️ **5. Deleting Files**
+
+- **Delete a file**:
+  ```bash
+  rm filename.txt
+  ```
+
+- **Delete a directory and its contents**:
+  ```bash
+  rm -r directory_name
+  ```
+
+---
+
+### 📑 **6. Changing File Permissions**
+
+- **Change file permissions** (read, write, execute):
+  ```bash
+  chmod 755 filename
+  ```
+
+- **Change file ownership** (user:group):
+  ```bash
+  chown user:group filename
+  ```
+
+---
+
+### 🔍 **7. File Search**
+
+- **Search for a file by name**:
+  ```bash
+  find /path/to/search -name filename.txt
+  ```
+
+---
+
+### 🔐 **8. File Compression**
+
+- **Create a .tar file**:
+  ```bash
+  tar -cvf archive_name.tar /path/to/directory
+  ```
+
+- **Extract a .tar file**:
+  ```bash
+  tar -xvf archive_name.tar
+  ```
+
+---
+
+### 📚 **9. File Disk Usage**
+
+- **Check the disk usage of files and directories**:
+  ```bash
+  du -sh /path/to/directory
+  ```
+
+- **Check free disk space**:
+  ```bash
+  df -h
+  ```
+
+---
+
+## ✨ **Bonus Tips**:
+- Use **wildcards** (`*`, `?`) to match multiple files.  
+  Example: `ls *.txt` to list all `.txt` files.
+
+---
 
