@@ -286,9 +286,6 @@ A **package** is a compressed file containing a program or software, along with 
 - 📦 Package Management Services (apt, yum, dnf)
 
 ---
-Of course! Here’s the **detailed theory in 5–8 lines** for **👤 Linux User Management**:
-
----
 
 ## 👤 **Linux User Management**
 
@@ -299,9 +296,6 @@ With `groupadd` and `usermod -aG`, you can **create groups** and **add users to 
 **Permissions** are controlled by `chown` (change ownership) and `chmod` (change file access rights). 📂  
 You can also **lock, unlock, or expire** user accounts (`passwd -l`, `chage`) to enhance security. 🔐  
 This ensures that **only the right people** have the **right level of access** at all times! 🚀
-
----
-Certainly! Here are the **Linux commands** for the requested **user management tasks** with explanations:
 
 ---
 
