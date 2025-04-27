@@ -720,5 +720,251 @@ The **VI editor** is a powerful tool for text editing in Linux, but mastering it
   - `J` → Join the current line with the next line
 
 ---
+### 🔐 **File Permissions in Linux**
+
+In Linux, **file permissions** are a critical part of security and help control who can access and modify files. Each file or directory in Linux has associated **permissions** that determine what actions users can perform. Understanding these permissions is essential for managing security on your Linux system.
+
+---
+
+### 🔹 **Types of Permissions**
+- **Read (r)**: Allows reading the file or listing the contents of a directory.
+- **Write (w)**: Allows modifying the file or adding/removing files in a directory.
+- **Execute (x)**: Allows executing a file (if it's a script or program) or accessing a directory's contents.
+
+These permissions are applied to three types of users:
+- **Owner (u)**: The user who owns the file.
+- **Group (g)**: Users who belong to the file's group.
+- **Others (o)**: Everyone else who is not the owner or in the group.
+
+---
+
+### 🔹 **Viewing File Permissions**
+To view the permissions of a file, use the `ls -l` command:
+```bash
+ls -l filename
+```
+Output example:
+```
+-rw-r--r-- 1 user group 12345 Jan  1 12:34 file.txt
+```
+Explanation:
+- The first character (`-`) indicates it's a regular file.
+- The next three characters (`rw-`) represent the owner's permissions (read and write).
+- The next three (`r--`) represent the group's permissions (read only).
+- The final three (`r--`) represent others' permissions (read only).
+
+---
+
+### 🔹 **Changing File Permissions**
+To change file permissions, the `chmod` command is used:
+- **Syntax**: `chmod [options] mode file`
+- **Mode** can be specified in **symbolic** or **numeric** form.
+
+#### 🔹 **Symbolic Mode**
+- **`r`**: Read
+- **`w`**: Write
+- **`x`**: Execute
+
+- Example 1: Give execute permission to the owner of the file
+  ```bash
+  chmod u+x file.txt
+  ```
+
+- Example 2: Remove write permission for the group
+  ```bash
+  chmod g-w file.txt
+  ```
+
+- Example 3: Give read and write permissions to the owner, and read permission to others
+  ```bash
+  chmod u+rw, o+r file.txt
+  ```
+
+#### 🔹 **Numeric Mode**
+Each permission is represented by a number:
+- **Read (r) = 4**
+- **Write (w) = 2**
+- **Execute (x) = 1**
+
+- The permissions are represented by three digits:
+  - **First digit** for the **owner**
+  - **Second digit** for the **group**
+  - **Third digit** for **others**
+
+- Example: Set permissions to `rw-r--r--`:
+  ```bash
+  chmod 644 file.txt
+  ```
+
+  Breakdown:
+  - Owner (`rw-`): 6 (read + write = 4 + 2)
+  - Group (`r--`): 4 (read)
+  - Others (`r--`): 4 (read)
+
+---
+
+### 🔹 **Changing Ownership**
+To change the ownership of a file, the `chown` command is used:
+- **Syntax**: `chown [owner][:group] file`
+
+- Example: Change the owner to `user1` and the group to `staff`:
+  ```bash
+  chown user1:staff file.txt
+  ```
+
+- Example: Change the owner to `user1` only:
+  ```bash
+  chown user1 file.txt
+  ```
+
+---
+
+### 🔹 **Changing Group Ownership**
+To change the group ownership of a file, the `chgrp` command is used:
+- **Syntax**: `chgrp group file`
+
+- Example: Change the group ownership to `admin`:
+  ```bash
+  chgrp admin file.txt
+  ```
+
+---
+### 🔑 **Special Permissions: setfacl and getfacl**
+
+In Linux, **Access Control Lists (ACLs)** provide a more flexible permission model than the traditional user/group/other file permissions. ACLs allow you to set permissions for individual users or groups on specific files or directories.
+
+Here’s how you can use **`setfacl`** and **`getfacl`** to manage and view ACLs:
+
+---
+
+### **🔹 What is `setfacl`?**
+The `setfacl` command is used to **set** ACLs on files and directories. It allows you to assign permissions to specific users or groups that are not part of the file’s owner, group, or other categories.
+
+### **🔹 What is `getfacl`?**
+The `getfacl` command is used to **view** the current ACLs on a file or directory. It provides detailed information about the permissions set on the file for each user or group.
+
+---
+
+### **💻 How to Use `setfacl` and `getfacl`**
+
+#### **1. Setting ACL for a User**
+To assign specific permissions to a user for a file, use the `setfacl` command. For example:
+
+```bash
+setfacl -m u:username:rwx /path/to/file
+```
+- **Explanation**:
+  - `-m`: Modify (set) ACL.
+  - `u:username:rwx`: Grant the user `username` **read (r)**, **write (w)**, and **execute (x)** permissions on the file.
+  - `/path/to/file`: The file or directory where ACL is being set.
+
+**Example:**
+```bash
+setfacl -m u:john:rw /home/user/file.txt
+```
+This command grants **read** and **write** permissions to the user `john` on the file `/home/user/file.txt`.
+
+---
+
+#### **2. Setting ACL for a Group**
+Similarly, you can set permissions for a group. Use the `g:` flag to specify the group.
+
+```bash
+setfacl -m g:groupname:rx /path/to/directory
+```
+- **Explanation**:
+  - `g:groupname:rx`: Grant the group `groupname` **read (r)** and **execute (x)** permissions.
+  - `/path/to/directory`: The directory to set the ACL on.
+
+**Example:**
+```bash
+setfacl -m g:devs:rx /projects/myproject
+```
+This command grants **read** and **execute** permissions to the group `devs` on the `/projects/myproject` directory.
+
+---
+
+#### **3. Setting Default ACL for Directories**
+To set default ACLs for directories, which apply to newly created files and directories within it, use the `-d` option:
+
+```bash
+setfacl -d -m u:username:rw /path/to/directory
+```
+- **Explanation**:
+  - `-d`: Set default ACLs for files created within the directory.
+  - `-m`: Modify the ACL.
+  - `u:username:rw`: Grant **read (r)** and **write (w)** permissions to `username` for newly created files in the directory.
+
+**Example:**
+```bash
+setfacl -d -m u:alice:rw /projects/shared
+```
+This ensures that any new files created in `/projects/shared` will automatically grant **read** and **write** permissions to the user `alice`.
+
+---
+
+#### **4. Removing ACLs**
+You can also remove ACLs for specific users or groups using the `-x` option:
+
+```bash
+setfacl -x u:username /path/to/file
+```
+- **Explanation**:
+  - `-x`: Remove ACL entry.
+  - `u:username`: Specifies the user whose ACL will be removed.
+
+**Example:**
+```bash
+setfacl -x u:bob /home/user/file.txt
+```
+This command removes the ACL for the user `bob` on the file `/home/user/file.txt`.
+
+---
+
+### **👁️ Viewing ACLs with `getfacl`**
+To view the current ACLs on a file or directory, use the `getfacl` command.
+
+```bash
+getfacl /path/to/file
+```
+
+**Example:**
+```bash
+getfacl /home/user/file.txt
+```
+This will display the ACLs set on the file `/home/user/file.txt`.
+
+**Sample Output:**
+```bash
+# file: /home/user/file.txt
+# owner: user
+# group: users
+user::rw-
+user:john:rw-
+group::r--
+mask::rw-
+other::r--
+```
+
+- The output shows:
+  - **Owner** (`user`) has **read** and **write** permissions.
+  - **User** `john` has **read** and **write** permissions.
+  - **Group** has **read** permission.
+  - **Mask** sets the maximum permissions for all users.
+  - **Others** have **read** permission.
+
+---
+
+### **🚫 Remove All ACLs**
+If you want to remove all ACLs from a file or directory and revert it to standard user/group/other permissions, you can use the `-b` option with `setfacl`:
+
+```bash
+setfacl -b /path/to/file
+```
+
+This command removes all ACL entries from the file or directory, leaving only the basic permissions.
+
+---
+
 
 
