@@ -208,4 +208,69 @@ The system follows a **hierarchical file system**, and you use commands like `ls
 
 ---
 
+## 📦 **Package Management in Linux**
+
+Package management is essential for managing the software on a Linux system. It allows you to **install**, **update**, **remove**, and **manage software** packages efficiently.
+
+---
+
+### **1. What is a Package?**  
+A **package** is a compressed file containing a program or software, along with its dependencies, configuration files, and documentation. These packages make it easy to install and maintain software on Linux systems.
+
+---
+
+### **2. Types of Package Management Systems**
+- **Debian-based systems** (e.g., Ubuntu, Debian):  
+  Use **APT (Advanced Package Tool)** for managing packages.  
+  Example command:  
+  ```bash
+  sudo apt install <package_name>   # Install a package
+  sudo apt update                   # Update package list
+  sudo apt upgrade                  # Upgrade installed packages
+  sudo apt remove <package_name>    # Remove a package
+  ```
+  
+- **Red Hat-based systems** (e.g., CentOS, Fedora):  
+  Use **YUM (Yellowdog Updater, Modified)** or **DNF (Dandified YUM)** for managing packages.  
+  Example command:  
+  ```bash
+  sudo yum install <package_name>   # Install a package
+  sudo yum update                   # Update packages
+  sudo yum remove <package_name>    # Remove a package
+  ```
+
+- **Arch-based systems** (e.g., Arch Linux, Manjaro):  
+  Use **Pacman** for managing packages.  
+  Example command:  
+  ```bash
+  sudo pacman -S <package_name>      # Install a package
+  sudo pacman -Sy                   # Synchronize package databases
+  sudo pacman -R <package_name>      # Remove a package
+  ```
+
+---
+
+### **3. Package Formats**
+- **DEB**: Used by Debian-based distributions (e.g., Ubuntu).
+- **RPM**: Used by Red Hat-based distributions (e.g., CentOS, Fedora).
+- **PKGBUILD**: Used by Arch Linux for building packages.
+
+---
+
+### **4. How Package Management Works**
+- **Repositories**:  
+  Linux distributions maintain **repositories**, which are online servers storing packages. When you run the package manager (e.g., `apt`, `dnf`, `pacman`), it connects to these repositories to fetch packages.
+
+- **Dependencies**:  
+  When installing a program, the package manager automatically installs any required **dependencies** (other software packages needed for the program to work).
+
+---
+
+### **5. Advantages of Package Management**
+- **Efficiency**: Automates the process of installing, updating, and removing software. 🔄  
+- **Security**: Ensures software is up to date with security patches. 🔒  
+- **Convenience**: Provides easy access to thousands of software packages in official repositories. 📦
+
+---
+
 
