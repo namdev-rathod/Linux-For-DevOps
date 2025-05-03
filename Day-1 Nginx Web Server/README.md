@@ -1,4 +1,5 @@
 🚀 **Mastering Virtual Hosting with Nginx on Linux!**
+
 🔧 Real-time Setup for Hosting Multiple Environments 🧑‍💻
 
 ---
@@ -122,6 +123,7 @@ sudo certbot renew --dry-run
 ### 🌐 **Verify Access:**
 
 🔗 [https://dev.awsguruji.net](https://dev.awsguruji.net)
+
 🔗 [https://prod.awsguruji.net](https://prod.awsguruji.net)
 
 ---
