@@ -966,5 +966,145 @@ This command removes all ACL entries from the file or directory, leaving only th
 
 ---
 
+### 🌐 **What is Networking in Linux?**
 
+**Networking in Linux** refers to the configuration, management, and troubleshooting of network connections on Linux-based systems. It enables Linux machines to communicate with each other, access the internet, connect to servers, and share data securely and efficiently.
+
+---
+
+### 💡 **Key Concepts:**
+
+* **IP Addressing**: Assigns a unique identity to each device.
+* **Subnetting**: Divides networks for better organization and security.
+* **Gateway**: Routes traffic from your network to other networks.
+* **DNS (Domain Name System)**: Resolves human-readable domain names to IP addresses.
+* **Interfaces**: Physical (e.g., `eth0`) or virtual (e.g., `lo`) network devices used to send/receive data.
+
+---
+
+### 📦 **Why It's Important in DevOps:**
+
+* Managing connectivity between microservices and cloud infrastructure.
+* Configuring CI/CD pipelines to access remote servers or APIs.
+* Monitoring and securing network traffic in production environments.
+* Debugging failed deployments due to DNS or port issues.
+
+---
+
+### 🛠️ **Common Commands:**
+
+* `ip a` – Show IP address
+* `ping` – Test connectivity
+* `netstat` / `ss` – Check listening ports
+* `dig` / `nslookup` – DNS troubleshooting
+* `curl` – Test HTTP endpoints
+
+---
+
+### 🌐 **Basic Networking Examples for DevOps**
+
+---
+
+**0️⃣ IP Address - Private Class**
+🔍 Private IP ranges help in internal communication within networks.
+
+* Examples:
+
+  * `10.0.0.0 – 10.255.255.255`
+  * `172.16.0.0 – 172.31.255.255`
+  * `192.168.0.0 – 192.168.255.255`
+* Use the online subnet calculator: [https://www.davidc.net/sites/default/subnets/subnets.html](https://www.davidc.net/sites/default/subnets/subnets.html)
+
+---
+
+**1️⃣ `curl ifconfig.me`**
+📡 Get your **public IP address** from a Linux terminal:
+
+```bash
+curl ifconfig.me
+```
+
+🧠 Useful when setting up cloud VMs or whitelisting IPs in firewalls.
+
+---
+
+**2️⃣ `netstat -tlupn`**
+📊 View all **listening services and their ports**:
+
+```bash
+sudo netstat -tlupn
+```
+
+* `t` – TCP
+* `u` – UDP
+* `l` – Listening
+* `p` – Show PID
+* `n` – Show numeric addresses
+
+📍 Example:
+
+```bash
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      1234/apache2
+```
+
+---
+
+**3️⃣ `traceroute google.com`**
+🛰️ Shows the **network path (hops)** to a destination:
+
+```bash
+traceroute google.com
+```
+
+🔎 Helps detect where latency or packet loss happens.
+
+---
+
+**4️⃣ `curl` and `wget`**
+📥 Test endpoint and download files:
+
+```bash
+curl -I https://example.com     # Header only
+curl -O https://example.com/app.tar.gz
+
+wget https://example.com/app.tar.gz
+```
+
+📌 `curl` is good for APIs, `wget` is good for large file downloads.
+
+---
+
+**5️⃣ `nslookup google.com`**
+🔎 Query DNS to find IP address of a domain:
+
+```bash
+nslookup google.com
+```
+
+🧠 Helps troubleshoot DNS resolution issues.
+
+---
+
+**6️⃣ `dig google.com`**
+📖 More detailed DNS query than `nslookup`:
+
+```bash
+dig google.com
+```
+
+* Shows A record, TTL, authoritative info.
+
+---
+
+**7️⃣ `ifconfig` / `ip a` / `ip r`**
+🛠️ Check network interfaces and routing table:
+
+```bash
+ifconfig      # Deprecated but still used
+ip a          # Show all network interfaces and IPs
+ip r          # Show routing table
+```
+
+---
 
