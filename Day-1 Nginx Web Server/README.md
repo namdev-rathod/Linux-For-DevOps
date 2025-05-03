@@ -136,9 +136,13 @@ sudo certbot renew --dry-run
 ---
 
 💬 **Why Virtual Hosting?**
+
 👉 Host multiple environments/domains on a single server
+
 👉 Simplified config management
+
 👉 Cost-effective and scalable 💡
+
 
 ---
 
