@@ -1108,3 +1108,39 @@ ip r          # Show routing table
 
 ---
 
+### 🔐 **Private IP Address Classes (IPv4)**
+
+Private IP addresses are reserved for internal network use and are not routable on the public internet. They are defined by [RFC 1918](https://datatracker.ietf.org/doc/html/rfc1918).([Network Lessons][1])
+
+| **Class** | **IP Range**                  | **Subnet Mask** | **Total Addresses** | **Typical Use Cases**               |                                                                                            |
+| --------- | ----------------------------- | --------------- | ------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------ |
+| A         | 10.0.0.0 – 10.255.255.255     | 255.0.0.0       | 16,777,216          | Large enterprises, ISPs, cloud VPCs |                                                                                            |
+| B         | 172.16.0.0 – 172.31.255.255   | 255.240.0.0     | 1,048,576           | Medium-sized networks, universities |                                                                                            |
+| C         | 192.168.0.0 – 192.168.255.255 | 255.255.0.0     | 65,536              | Home networks, small businesses     | ([Network Lessons][1], [GeeksforGeeks][2], [IPCisco][3], [ipstack][4], [DEV Community][5]) |
+
+These ranges are commonly used in environments like home routers, corporate LANs, Docker containers, and cloud infrastructures.
+
+---
+
+### 🌐 **IPv4 vs. IPv6 Comparison**
+
+| **Feature**              | **IPv4**                                   | **IPv6**                                        |                                                                                                                                                    |
+| ------------------------ | ------------------------------------------ | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Address Length**       | 32-bit                                     | 128-bit                                         |                                                                                                                                                    |
+| **Address Format**       | Decimal (e.g., 192.168.1.1)                | Hexadecimal (e.g., 2001:0db8::1)                |                                                                                                                                                    |
+| **Total Addresses**      | \~4.3 billion                              | \~340 undecillion                               |                                                                                                                                                    |
+| **Header Size**          | 20–60 bytes (variable)                     | 40 bytes (fixed)                                |                                                                                                                                                    |
+| **Configuration**        | Manual or DHCP                             | Stateless auto-configuration or DHCPv6          |                                                                                                                                                    |
+| **Security**             | Optional (IPSec)                           | Mandatory (IPSec)                               |                                                                                                                                                    |
+| **Broadcast Support**    | Yes                                        | No (uses multicast and anycast)                 |                                                                                                                                                    |
+| **NAT Required**         | Yes, due to limited address space          | No, ample address space                         |                                                                                                                                                    |
+| **Packet Fragmentation** | By sender and routers                      | By sender only                                  |                                                                                                                                                    |
+| **Adoption**             | Widely used, but address exhaustion issues | Growing adoption, especially in modern networks | ([techgeekbuzz.com][6], [ExpressVPN][7], [Networks Training][8], [phoenixNAP \| Global IT Services][9], [Tech Differences][10], [Bright Data][11]) |
+
+IPv6 was developed to address the limitations of IPv4, notably the exhaustion of available addresses. It offers a vastly larger address space and includes features like improved security and auto-configuration.([lifewire.com][12])
+
+---
+
+
+
+
